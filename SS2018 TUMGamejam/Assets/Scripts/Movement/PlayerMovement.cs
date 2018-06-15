@@ -6,10 +6,10 @@ public class PlayerMovement : MonoBehaviour { //This script experiments with mov
 
     Rigidbody rb; // rigidbody
     CharacterController controller; //character controller
-    public float rotateSpeed;
-    public float moveSpeed;
-    public float inAirSpeed = 1;
-    public float jumpSpeed;
+    public float rotateSpeed=50;
+    public float moveSpeed=10;
+    public float inAirSpeed = 3;
+    public float jumpSpeed=12;
     public float gravity = 20;
 
     private float lastYSpeed = 0;//need this for in air movement
@@ -31,11 +31,6 @@ public class PlayerMovement : MonoBehaviour { //This script experiments with mov
         moveController(); //move with the help of the CController
 
 	}
-
-    private void FixedUpdate()
-    {
-        //moveMovePosition(); //better than addForce but still not optimal
-    }
 
     void Rotate()
     {
@@ -88,41 +83,4 @@ public class PlayerMovement : MonoBehaviour { //This script experiments with mov
         controller.Move(moveValues*Time.deltaTime);
     }
 
-
-
-    // these methods are not that good for moving
-    void moveAddForce()
-    {
-        float moveHorizontal = Input.GetAxis("Horizontal");// saves vertical/horizontal input
-        float moveVertical = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);//translates the input in a movement vecor
-
-        rb.AddForce(movement * moveSpeed);//moves the player using the addForce method
-
-    }
-
-    void moveMovePosition()
-    {
-        float moveHorizontal = Input.GetAxis("Horizontal");// saves vertical/horizontal input
-        float moveVertical = Input.GetAxis("Vertical");
-
-        if (moveVertical>0)
-        {
-            rb.MovePosition(transform.position+transform.forward*moveSpeed*Time.deltaTime);
-        }
-        if (moveVertical<0)
-        {
-            rb.MovePosition(transform.position - transform.forward * moveSpeed * Time.deltaTime);
-        }
-
-        if (moveHorizontal>0)
-        {
-            rb.MovePosition(transform.position + transform.right * moveSpeed * Time.deltaTime);
-        }
-        if (moveHorizontal<0)
-        {
-            rb.MovePosition(transform.position - transform.right * moveSpeed * Time.deltaTime);
-        }
-    }
 }
