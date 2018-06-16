@@ -744,7 +744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropdown: {fileID: 0}
-  smallSize: 100
+  smallSize: 2048
   mediumSize: 4096
   bigSize: 8192
 --- !u!114 &765478711
@@ -1933,6 +1933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d6b53b4f2e2c649bc9357394c84676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: 0
 --- !u!4 &2014836047
 Transform:
   m_ObjectHideFlags: 0
