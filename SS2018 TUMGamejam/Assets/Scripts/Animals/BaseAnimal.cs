@@ -12,14 +12,17 @@ public class BaseAnimal : MonoBehaviour {
 
 	private NavMeshAgent navAgent;
 
-	private float standingTimer = 0.0f;
-	private Boolean rotating = false;
+	private bool rotating = false;
+	private float rotTimer = 0.0f;
+	private float rotTime = 0.0f;
+
 
 	public enum AnimalState
 	{
 		none,
 		walking,
 		standing,
+		rotating,
 	}
 
 
@@ -31,10 +34,12 @@ public class BaseAnimal : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+		Debug.Log(CURRENT_STATE);	
+		Behavior();
+
 		LAST_STATE = CURRENT_STATE;
 		CURRENT_STATE = NEXT_STATE;
-
-		Behavior();
 	}
 
 
@@ -44,38 +49,64 @@ public class BaseAnimal : MonoBehaviour {
 		{
 			case AnimalState.walking:
 				{
-					if(LAST_STATE != CURRENT_STATE)
+					System.Random rand = new System.Random();
+					Vector3 randDest = new Vector3(rand.Next(-25, 25), 0, rand.Next(-25, 25));
+
+					if (LAST_STATE != CURRENT_STATE)
 					{
-						System.Random r = new System.Random();
-						navAgent.SetDestination(new Vector3(r.Next(-30, 30), r.Next(-30, 30), r.Next(-30, 30)));
+						navAgent.SetDestination(randDest);
+						navAgent.isStopped = false;
 					}
-					navAgent.isStopped = false;
-					if(navAgent.remainingDistance < 0.5f)
+
+					if(Vector3.Distance(transform.position, randDest) < 2.0f)
 					{
-						NEXT_STATE = AnimalState.standing;
+						if (navAgent.isStopped == false)
+						{
+							navAgent.isStopped = true;
+							NEXT_STATE = AnimalState.standing;
+						}
 					}
+
+
 					break;
 				}
+
 			case AnimalState.standing:
 				{
-					System.Random r = new System.Random();
+					System.Random rand = new System.Random();
+					int r = rand.Next(500);
 
-					if(standingTimer >= 4.5f)
+					if(r == 7 || r == 119)
 					{
+						NEXT_STATE = AnimalState.rotating;
+					}
+					else if(r == 43)
+					{
+						NEXT_STATE = AnimalState.walking;
+					}
+
+					break;
+				}
+
+			case AnimalState.rotating:
+				{
+					System.Random rand = new System.Random();
+
+					if (rotating == false)
+					{
+						rotTime = rand.Next(1, 2);
 						rotating = true;
 					}
-
-					if (rotating)
+					else
 					{
-						RotateToPlayer();
-					}
-
-					standingTimer += Time.deltaTime;
-					if(standingTimer > 20.0f)
-					{
-						standingTimer = 0.0f;
-						rotating = false;
-						NEXT_STATE = AnimalState.walking;
+						rotTimer += Time.deltaTime;
+						transform.Rotate(0, 0.5f, 0);
+						if(rotTimer > rotTime)
+						{
+							rotTime = rotTimer = 0.0f;
+							rotating = false;
+							NEXT_STATE = AnimalState.standing;
+						}
 					}
 
 					break;
@@ -84,13 +115,13 @@ public class BaseAnimal : MonoBehaviour {
 	}
 
 
-	public void RotateToPlayer()
+	public void RotateTo(Vector3 view)
 	{
 		Quaternion lookRotation;
 		Vector3 direction;
 
 		//find the vector pointing from our position to the target
-		direction = (new Vector3(0, 0, 0) - transform.position).normalized;
+		direction = (view - transform.position).normalized;
 
 		//create the rotation we need to be in to look at the target
 		lookRotation = Quaternion.LookRotation(direction);
