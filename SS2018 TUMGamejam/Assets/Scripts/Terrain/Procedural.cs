@@ -26,8 +26,8 @@ public class Procedural : MonoBehaviour{
 		data = terrain.terrainData;
         data.heightmapResolution = width;
         data.size = new Vector3(width,height,depth);
-		terrain.terrainData = GenerateTerrain(terrain.terrainData);
         placement.Place();
+        terrain.terrainData = GenerateTerrain(terrain.terrainData);
 
         Blending blender = new Blending();//init blender
         Texture2D grass = Resources.Load("greenLawn") as Texture2D;//1

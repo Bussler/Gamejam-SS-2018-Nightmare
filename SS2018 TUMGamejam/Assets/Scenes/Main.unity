@@ -306,7 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 512
   height: 512
-  depth: 200
+  depth: 100
   scale: 4
 --- !u!114 &462327353
 MonoBehaviour:
