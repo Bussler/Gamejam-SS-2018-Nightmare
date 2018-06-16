@@ -15,6 +15,7 @@ public class BaseAnimal : MonoBehaviour {
 	private bool rotating = false;
 	private float rotTimer = 0.0f;
 	private float rotTime = 0.0f;
+	private int rotDirection = 1;
 
 
 	public enum AnimalState
@@ -96,11 +97,17 @@ public class BaseAnimal : MonoBehaviour {
 					{
 						rotTime = rand.Next(1, 2);
 						rotating = true;
+						rotDirection = (int) Math.Round(rand.NextDouble());
+						if (rotDirection == 0)
+						{
+							rotDirection = -1;
+						}
 					}
 					else
 					{
 						rotTimer += Time.deltaTime;
-						transform.Rotate(0, 0.5f, 0);
+						Debug.Log(rotDirection);
+						transform.Rotate(0, rotDirection * 0.5f, 0);
 						if(rotTimer > rotTime)
 						{
 							rotTime = rotTimer = 0.0f;
