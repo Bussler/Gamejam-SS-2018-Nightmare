@@ -13,7 +13,8 @@ public class SelectLevelSize : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        dropdown = this.GetComponent<Dropdown>();
+        ChangeLevelSize();
 	}
 	
 	// Update is called once per frame
@@ -26,7 +27,7 @@ public class SelectLevelSize : MonoBehaviour {
         switch (dropdown.value)
         {
             case 0:
-                Global.size = smallSize;
+            Global . size = smallSize;
                 break;
                 ;
             case 1:
