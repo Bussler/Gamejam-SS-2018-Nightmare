@@ -6,24 +6,30 @@ using UnityEngine.AI;
 
 public class BaseAnimal : MonoBehaviour {
 
-	private AnimalState LAST_STATE = AnimalState.none;
-	private AnimalState CURRENT_STATE = AnimalState.none;
+	public PlayerMovement player;
+
+
+	private AnimalState LAST_STATE = AnimalState.inactive;
+	private AnimalState CURRENT_STATE = AnimalState.inactive;
 	private AnimalState NEXT_STATE = AnimalState.walking;
 
 	private NavMeshAgent navAgent;
 
+	private float timer = 0.0f;
+
 	private bool rotating = false;
-	private float rotTimer = 0.0f;
 	private float rotTime = 0.0f;
 	private int rotDirection = 1;
 
 
 	public enum AnimalState
 	{
-		none,
+		inactive,
 		walking,
 		standing,
 		rotating,
+		stare,
+		attacking,
 	}
 
 
@@ -105,15 +111,48 @@ public class BaseAnimal : MonoBehaviour {
 					}
 					else
 					{
-						rotTimer += Time.deltaTime;
-						Debug.Log(rotDirection);
+						timer += Time.deltaTime;
 						transform.Rotate(0, rotDirection * 0.5f, 0);
-						if(rotTimer > rotTime)
+						if(timer > rotTime)
 						{
-							rotTime = rotTimer = 0.0f;
+							rotTime = timer = 0.0f;
 							rotating = false;
 							NEXT_STATE = AnimalState.standing;
 						}
+					}
+
+					break;
+				}
+
+			case AnimalState.stare:
+				{
+					if(player != null)
+					{
+						RotateTo(player.transform.position);
+					}
+
+					timer += Time.deltaTime;
+					if(timer > 2.0f)
+					{
+						timer = 0.0f;
+						NEXT_STATE = AnimalState.attacking;
+					}
+
+					break;
+				}
+
+			case AnimalState.attacking:
+				{
+					Vector3 playerPos = player.transform.position;
+					playerPos.y = 0;
+
+					navAgent.SetDestination(playerPos);
+					navAgent.isStopped = false;
+
+					if(Vector3.Distance(transform.position, player.transform.position) > 5)
+					{
+						navAgent.isStopped = true;
+						NEXT_STATE = AnimalState.walking;
 					}
 
 					break;
