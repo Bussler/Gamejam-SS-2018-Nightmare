@@ -187,6 +187,7 @@ public class BaseAnimal : MonoBehaviour {
 			rotating = false;
 			rotTime = 0.0f;
 			rotDirection = 1;
+			navAgent.isStopped = true;
 		}
 	}
 
