@@ -12,6 +12,7 @@ public class CameraScreenshot : MonoBehaviour
     private BoxCollider coll;
     public Camera Cam;
     public FotoFade foto;
+    public AudioSource audio;
 
    
    // public Transform SpawnPoint;
@@ -28,6 +29,7 @@ public class CameraScreenshot : MonoBehaviour
        Cam = this.GetComponent<Camera>();
         coll = this.GetComponent<BoxCollider>();
         coll.enabled = false;
+        audio = this.GetComponent<AudioSource>();
         
     }
 
@@ -55,7 +57,7 @@ public class CameraScreenshot : MonoBehaviour
 
        // ChangeEnviorment();
        foto.SetBlack();
-      
+        audio.Play();
             Debug.Log("capture");
            
 
