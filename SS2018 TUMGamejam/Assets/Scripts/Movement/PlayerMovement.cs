@@ -19,14 +19,12 @@ public class PlayerMovement : MonoBehaviour { //This script experiments with mov
     private bool wasjumping;
     private float originalMoveSpeed;
     private float helperSpeed;
-    public bool posHasSet;
     
 
     Vector3 moveValues = Vector3.zero;
 
     // Use this for initialization
     void Start () {
-        posHasSet = false;
         rb = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
         originalMoveSpeed = moveSpeed;
@@ -35,13 +33,7 @@ public class PlayerMovement : MonoBehaviour { //This script experiments with mov
 	
 	// Update is called once per frame
 	void Update () {
-        if (!posHasSet)
-        {
-            // this.transform.position = new Vector3(this.transform.position.x, Terrain.activeTerrain.SampleHeight(new Vector3(0, 0, 0))+2, this.transform.position.z);
-           // this.transform.position = new Vector3( 10, 10, 10);
-            posHasSet = true;
-        }
-            Rotate();
+        Rotate();
         //moveAddForce(); //pretty bad imo
 
         moveController(); //move with the help of the CController

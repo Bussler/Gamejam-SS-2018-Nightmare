@@ -9,7 +9,6 @@ public class Nebel : MonoBehaviour {
     // Use this for initialization
     public bool hasNebel;
 	void Start () {
-        radius = Global.size - 100 / 2;
         this.GetComponent<SphereCollider>().radius = this.radius;
 	}
 	

@@ -20,9 +20,11 @@ public class TerrainTreePLacement : MonoBehaviour {
     private int terrainLength; // terrain size (z)
     private int terrainPosX; // terrain position x
     private int terrainPosZ; // terrain position z
+    
 
-    void Start()
+    public void Place()
     {
+        
         terrain = this.gameObject.GetComponent<Terrain>();
         // terrain size x
         terrainWidth = (int)terrain.terrainData.size.x;
