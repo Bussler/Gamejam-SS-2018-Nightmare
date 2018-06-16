@@ -5,6 +5,7 @@
     <e p="D:\Workspace\UnityWorkspace\PLSGAMEJAM\SS2018 TUMGamejam" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="asss.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Animals" t="Include">
             <e p="BaseAnimal.cs" t="Include" />
@@ -13,6 +14,7 @@
             <e p="CameraFollow.cs" t="Include" />
           </e>
           <e p="Movement" t="Include">
+            <e p="FPCamera.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
           </e>
           <e p="NavMesh" t="Include">
@@ -20,6 +22,9 @@
             <e p="NavMeshSourceTag.cs" t="Include" />
           </e>
           <e p="Terrain" t="Include">
+            <e p="DiamondSquare.cs" t="Include" />
+            <e p="Procedural.cs" t="Include" />
+            <e p="t.cs" t="Include" />
             <e p="TerrainGenerator.cs" t="Include" />
           </e>
         </e>
