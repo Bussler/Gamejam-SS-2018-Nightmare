@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a15c260ad2af1fd4fbbeb78589e6a540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfObjects: 20
+  numberOfObjects: 100
   objectToPlace: {fileID: 1501793674435042, guid: 960c940bd693a2d4d8f5473077d97b64,
     type: 2}
 --- !u!1001 &870506217

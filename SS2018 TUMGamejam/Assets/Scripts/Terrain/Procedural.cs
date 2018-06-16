@@ -12,20 +12,22 @@ public class Procedural : MonoBehaviour{
 
 	private float offsetX = 100f;
 	private float offsetY = 100f;
-	
-	
-	public float scale = 2f;
+    private TerrainTreePLacement placement;
+
+    public float scale = 2f;
 	private TerrainData data;
 	void Start() {
-       // width = Global.size;
+        // width = Global.size;
         //height = Global.size;
-		offsetX = Random.RandomRange(0f, 999f);
+        placement = this.GetComponent<TerrainTreePLacement>();
+        offsetX = Random.RandomRange(0f, 999f);
 		offsetY = Random.RandomRange(0f, 999f);
 		Terrain terrain = this.GetComponent<Terrain>();
 		data = terrain.terrainData;
         data.heightmapResolution = width;
         data.size = new Vector3(width,height,depth);
 		terrain.terrainData = GenerateTerrain(terrain.terrainData);
+        placement.Place();
 
         Blending blender = new Blending();//init blender
         Texture2D grass = Resources.Load("greenLawn") as Texture2D;//1
