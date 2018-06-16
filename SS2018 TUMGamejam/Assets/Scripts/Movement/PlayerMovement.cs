@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour { //This script experiments with mov
 
     Rigidbody rb; // rigidbody
     CharacterController controller; //character controller
-    public float rotateSpeed=50;
+    public float rotateSpeed=60;
     public float moveSpeed=10;
     public float inAirSpeed = 3;
     public float jumpSpeed=12;
@@ -15,12 +15,20 @@ public class PlayerMovement : MonoBehaviour { //This script experiments with mov
     private float lastYSpeed = 0;//need this for in air movement
     private float storedYValue=0;
 
+    private float cooldown = 0;
+    private bool wasjumping;
+    private float originalMoveSpeed;
+    private float helperSpeed;
+    
+
     Vector3 moveValues = Vector3.zero;
 
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
+        originalMoveSpeed = moveSpeed;
+        helperSpeed = moveSpeed / 2;
 	}
 	
 	// Update is called once per frame
@@ -47,12 +55,27 @@ public class PlayerMovement : MonoBehaviour { //This script experiments with mov
 
         if (controller.isGrounded)
         {
+            if (wasjumping==true)
+            {
+                cooldown = cooldown-Time.deltaTime;//runterzaehlen
+                moveSpeed = helperSpeed+(Time.deltaTime*10);//movespeed anpassen nach der landung
+                if (cooldown<=0)
+                {
+                    cooldown = 0;
+                    wasjumping = false;
+                    moveSpeed = originalMoveSpeed;
+                    helperSpeed = moveSpeed / 2;
+                }
+            }
+
             moveValues = new Vector3(Input.GetAxis("Horizontal")*moveSpeed, 0.0f, Input.GetAxis("Vertical")*moveSpeed);
             moveValues = transform.TransformDirection(moveValues); //transforms vector from world into local space, therefore making the Rotatation of the player count
 
-            if (Input.GetButton("Jump"))
+            if (Input.GetButton("Jump")&&cooldown<=0)
             {
                 moveValues.y = jumpSpeed;//making the player jump
+                wasjumping = true;
+                cooldown = 1;
             }
         }
         else
