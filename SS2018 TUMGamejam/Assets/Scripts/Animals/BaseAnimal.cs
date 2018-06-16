@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class BaseAnimal : MonoBehaviour {
 
 	public PlayerMovement player;
-
+	public bool aggressive = false;
 
 	private AnimalState LAST_STATE = AnimalState.inactive;
 	private AnimalState CURRENT_STATE = AnimalState.inactive;
@@ -175,4 +175,19 @@ public class BaseAnimal : MonoBehaviour {
 		//rotate us over time according to speed until we are in the required rotation
 		transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 0.5f);
 	}
+
+
+	public void ReportPlayerSight(GameObject player)
+	{
+		if(player == this.player && aggressive && CURRENT_STATE != AnimalState.stare && CURRENT_STATE != AnimalState.attacking)
+		{
+			NEXT_STATE = AnimalState.stare;
+
+			timer = 0.0f;
+			rotating = false;
+			rotTime = 0.0f;
+			rotDirection = 1;
+		}
+	}
+
 }
