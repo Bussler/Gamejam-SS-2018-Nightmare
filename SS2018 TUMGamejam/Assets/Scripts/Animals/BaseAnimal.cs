@@ -79,7 +79,12 @@ public class BaseAnimal : MonoBehaviour {
 						}
 					}
 
-
+					timer += Time.deltaTime;
+					if (timer > 30.0f)
+					{
+						timer = 0.0f;
+						NEXT_STATE = AnimalState.rotating;
+					}
 					break;
 				}
 
