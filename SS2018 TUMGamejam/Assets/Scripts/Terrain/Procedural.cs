@@ -41,7 +41,7 @@ public class Procedural : MonoBehaviour{
         terrain.terrainData = GenerateTerrain(terrain.terrainData);
 
         Blending blender = new Blending();//init blender
-        Texture2D grass = Resources.Load("greenLawn") as Texture2D;//1
+        Texture2D grass = Resources.Load("gras15") as Texture2D;//1
         Texture2D wood = Resources.Load("Holz-34") as Texture2D;//2
         Texture2D mud = Resources.Load("mud02") as Texture2D;//3
         Texture2D stone = Resources.Load("rock8") as Texture2D;//4
