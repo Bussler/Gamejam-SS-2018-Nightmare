@@ -6,9 +6,12 @@ public class FotoFade : MonoBehaviour {
     public bool fading;
     private MeshRenderer render;
     public float fadeSpeed;
+
+	public GameController controller;
 	// Use this for initialization
 	void Start () {
         render = this.GetComponent<MeshRenderer>();
+		controller = GameObject.FindObjectOfType<GameController>();
 	}
 	
 	// Update is called once per frame
@@ -26,4 +29,16 @@ public class FotoFade : MonoBehaviour {
         fading = true;
 
     }
+	
+	public void SetBlack() {
+		render.material.color = new Color(0, 0, 0);
+	}
+	
+	
+	public void ChangeEnviorment() {
+
+		controller.ChangeState();
+
+	}
+	
 }

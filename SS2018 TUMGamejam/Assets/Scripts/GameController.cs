@@ -30,10 +30,7 @@ public class GameController : MonoBehaviour {
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            ChangeState();
-        }
+        
     }
 
 
@@ -63,11 +60,11 @@ public class GameController : MonoBehaviour {
 
                 }
 
-                TreePrototype[] tps = Terrain.activeTerrain.terrainData.treePrototypes;
+               /* TreePrototype[] tps = Terrain.activeTerrain.terrainData.treePrototypes;
                 tps[0].prefab = Resources.Load("treeStage1") as GameObject;
                 Terrain.activeTerrain.terrainData.treePrototypes = tps;
 
-
+*/
 
                 break;
 
@@ -89,9 +86,7 @@ public class GameController : MonoBehaviour {
 
                 }
 
-                TreePrototype[] tps2 = Terrain.activeTerrain.terrainData.treePrototypes;    // auch für die neuen büme den indes des tps arrays Anpassen;
-                tps2[0].prefab = Resources.Load("treeStage2") as GameObject;
-                Terrain.activeTerrain.terrainData.treePrototypes = tps2;
+            
                 break;
 
                  case 3:
@@ -112,9 +107,7 @@ public class GameController : MonoBehaviour {
 
                 }
 
-                TreePrototype[] tps3 = Terrain.activeTerrain.terrainData.treePrototypes;
-                tps3[0].prefab = Resources.Load("treeStage1") as GameObject;
-                Terrain.activeTerrain.terrainData.treePrototypes = tps3;
+             
                 break;
 
 
