@@ -44,7 +44,11 @@ public class BaseAnimal : MonoBehaviour {
 		{
 			case AnimalState.walking:
 				{
-					navAgent.SetDestination(new Vector3(4, 4, 4));
+					if(LAST_STATE != CURRENT_STATE)
+					{
+						System.Random r = new System.Random();
+						navAgent.SetDestination(new Vector3(r.Next(-30, 30), r.Next(-30, 30), r.Next(-30, 30)));
+					}
 					navAgent.isStopped = false;
 					if(navAgent.remainingDistance < 0.5f)
 					{
@@ -67,11 +71,11 @@ public class BaseAnimal : MonoBehaviour {
 					}
 
 					standingTimer += Time.deltaTime;
-					if(standingTimer > 30.0f)
+					if(standingTimer > 20.0f)
 					{
 						standingTimer = 0.0f;
 						rotating = false;
-						NEXT_STATE = AnimalState.none;
+						NEXT_STATE = AnimalState.walking;
 					}
 
 					break;
