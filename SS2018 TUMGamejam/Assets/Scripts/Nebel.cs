@@ -6,6 +6,7 @@ public class Nebel : MonoBehaviour {
 
    public GameObject player;
     public float radius;
+    public Terrain myTerrain;
     // Use this for initialization
     public bool hasNebel;
 	void Start () {
@@ -39,9 +40,7 @@ public class Nebel : MonoBehaviour {
         if ((player.transform.position - this.transform.position).magnitude > radius)
         {
             player.transform.position = player.transform.position + ((this.transform.position - player.transform.position).normalized*(radius-1))*2;
-
-
-
+            player.transform.position= new Vector3(this.transform.position.x ,myTerrain.terrainData.GetHeight(20, 20) + 20, transform.position.z);
         }
 	}
 }
