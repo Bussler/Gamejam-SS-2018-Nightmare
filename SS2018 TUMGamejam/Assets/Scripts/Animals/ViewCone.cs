@@ -6,12 +6,10 @@ public class ViewCone : MonoBehaviour {
 
 	public BaseAnimal animal;
 
-	private PlayerMovement player;
-
 
 	// Use this for initialization
 	void Start () {
-		player = animal.player;
+		
 	}
 	
 	// Update is called once per frame
@@ -20,11 +18,11 @@ public class ViewCone : MonoBehaviour {
 	}
 
 
-	public void OnCollisionEnter(Collision collision)
+	private void OnTriggerEnter(Collider other)
 	{
-		if(collision.gameObject.tag == "Player")
+		if (other.gameObject.tag.Equals("Player"))
 		{
-			animal.ReportPlayerSight(collision.gameObject);
+			animal.ReportPlayerSight();
 		}
 	}
 

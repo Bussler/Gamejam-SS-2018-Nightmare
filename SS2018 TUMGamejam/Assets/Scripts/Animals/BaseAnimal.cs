@@ -11,7 +11,7 @@ public class BaseAnimal : MonoBehaviour {
 
 	private AnimalState LAST_STATE = AnimalState.inactive;
 	private AnimalState CURRENT_STATE = AnimalState.inactive;
-	private AnimalState NEXT_STATE = AnimalState.walking;
+	public AnimalState NEXT_STATE = AnimalState.walking;
 
 	private NavMeshAgent navAgent;
 
@@ -42,7 +42,7 @@ public class BaseAnimal : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		Debug.Log(CURRENT_STATE);	
+		//Debug.Log(CURRENT_STATE);	
 		Behavior();
 
 		LAST_STATE = CURRENT_STATE;
@@ -149,7 +149,7 @@ public class BaseAnimal : MonoBehaviour {
 					navAgent.SetDestination(playerPos);
 					navAgent.isStopped = false;
 
-					if(Vector3.Distance(transform.position, player.transform.position) > 5)
+					if(Vector3.Distance(transform.position, player.transform.position) > 25.0f)
 					{
 						navAgent.isStopped = true;
 						NEXT_STATE = AnimalState.walking;
@@ -177,9 +177,9 @@ public class BaseAnimal : MonoBehaviour {
 	}
 
 
-	public void ReportPlayerSight(GameObject player)
+	public void ReportPlayerSight()
 	{
-		if(player == this.player && aggressive && CURRENT_STATE != AnimalState.stare && CURRENT_STATE != AnimalState.attacking)
+		if(aggressive && CURRENT_STATE != AnimalState.stare && CURRENT_STATE != AnimalState.attacking)
 		{
 			NEXT_STATE = AnimalState.stare;
 
