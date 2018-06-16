@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class Procedural : MonoBehaviour{
 
@@ -16,8 +17,8 @@ public class Procedural : MonoBehaviour{
 	public float scale = 2f;
 	private TerrainData data;
 	void Start() {
-        width = Global.size;
-        height = Global.size;
+       // width = Global.size;
+        //height = Global.size;
 		offsetX = Random.RandomRange(0f, 999f);
 		offsetY = Random.RandomRange(0f, 999f);
 		Terrain terrain = this.GetComponent<Terrain>();
@@ -25,7 +26,30 @@ public class Procedural : MonoBehaviour{
         data.heightmapResolution = width;
         data.size = new Vector3(width,height,depth);
 		terrain.terrainData = GenerateTerrain(terrain.terrainData);
-	}
+
+        Blending blender = new Blending();//init blender
+        Texture2D grass = Resources.Load("greenLawn") as Texture2D;//1
+        Texture2D wood = Resources.Load("Holz-34") as Texture2D;//2
+        Texture2D mud = Resources.Load("mud02") as Texture2D;//3
+        Texture2D stone = Resources.Load("rock8") as Texture2D;//4
+
+        Color[,] colorArray = blender.generateBlend(grass, wood, mud, stone, terrain.terrainData, width, height);
+
+        //use this colorArray to calculate a texture and apply it to the terrain
+        Texture2D image = new Texture2D(width, height);
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                image.SetPixel(x, y, colorArray[x, y]);
+            }
+        }
+
+        //save pic
+        var Bytes = image.EncodeToPNG();
+        File.WriteAllBytes(Application.dataPath + "/Resources/TerrainColorMap.png", Bytes);
+
+    }
 
 	TerrainData GenerateTerrain(TerrainData terrainData) {
 		
