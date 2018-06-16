@@ -16,10 +16,14 @@ public class Procedural : MonoBehaviour{
 	public float scale = 2f;
 	private TerrainData data;
 	void Start() {
+        width = Global.size;
+        height = Global.size;
 		offsetX = Random.RandomRange(0f, 999f);
 		offsetY = Random.RandomRange(0f, 999f);
 		Terrain terrain = this.GetComponent<Terrain>();
 		data = terrain.terrainData;
+        data.heightmapResolution = width;
+        data.size = new Vector3(width,height,depth);
 		terrain.terrainData = GenerateTerrain(terrain.terrainData);
 	}
 
