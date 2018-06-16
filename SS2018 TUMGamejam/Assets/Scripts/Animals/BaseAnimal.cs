@@ -14,12 +14,15 @@ public class BaseAnimal : MonoBehaviour {
 	public AnimalState NEXT_STATE = AnimalState.walking;
 
 	private NavMeshAgent navAgent;
+	public Terrain terrain;
 
 	private float timer = 0.0f;
 
 	private bool rotating = false;
 	private float rotTime = 0.0f;
 	private int rotDirection = 1;
+
+	private Procedural myProcedual;
 
 
 	public enum AnimalState
@@ -36,6 +39,7 @@ public class BaseAnimal : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		navAgent = GetComponent<NavMeshAgent>();
+		myProcedual = terrain.GetComponent<Procedural>();
 	}
 	
 
@@ -57,7 +61,8 @@ public class BaseAnimal : MonoBehaviour {
 			case AnimalState.walking:
 				{
 					System.Random rand = new System.Random();
-					Vector3 randDest = new Vector3(rand.Next(-25, 25), 0, rand.Next(-25, 25));
+					Vector3 randDest = new Vector3(transform.position.x + rand.Next(-50, 50), 0, transform.position.z + rand.Next(-50, 50));
+					randDest.y = terrain.terrainData.GetHeight((int) randDest.x, (int) randDest.z);
 
 					if (LAST_STATE != CURRENT_STATE)
 					{

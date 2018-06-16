@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 114426703635274172}
   m_Layer: 0
   m_Name: BaseAnimal
-  m_TagString: Animal
+  m_TagString: Animal1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,6 +201,7 @@ MonoBehaviour:
   player: {fileID: 0}
   aggressive: 1
   NEXT_STATE: 0
+  terrain: {fileID: 0}
 --- !u!114 &114753403786421830
 MonoBehaviour:
   m_ObjectHideFlags: 1
