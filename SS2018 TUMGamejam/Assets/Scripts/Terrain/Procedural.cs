@@ -19,15 +19,28 @@ public class Procedural : MonoBehaviour{
 	void Start() {
         // width = Global.size;
         //height = Global.size;
+
+        offsetX = Random.Range(0f, 999f);
+        offsetY = Random.Range(0f, 999f);
+
         placement = this.GetComponent<TerrainTreePLacement>();
-        offsetX = Random.RandomRange(0f, 999f);
-		offsetY = Random.RandomRange(0f, 999f);
-		Terrain terrain = this.GetComponent<Terrain>();
-		data = terrain.terrainData;
-        data.heightmapResolution = width;
-        data.size = new Vector3(width,height,depth);
         placement.Place();
+        
+
+    }
+
+    public void OnDestroy()
+    {
+
+        //generate and safe terrain and colormaps for the next run
+
+        Terrain terrain = this.GetComponent<Terrain>();
+        data = terrain.terrainData;
+        data.heightmapResolution = width;
+        data.size = new Vector3(width, height, depth);
         terrain.terrainData = GenerateTerrain(terrain.terrainData);
+
+        Debug.Log("Test");
 
         Blending blender = new Blending();//init blender
         Texture2D grass = Resources.Load("greenLawn") as Texture2D;//1
@@ -50,10 +63,9 @@ public class Procedural : MonoBehaviour{
         //save pic
         var Bytes = image.EncodeToPNG();
         File.WriteAllBytes(Application.dataPath + "/Resources/TerrainColorMap.png", Bytes);
-
     }
 
-	TerrainData GenerateTerrain(TerrainData terrainData) {
+    TerrainData GenerateTerrain(TerrainData terrainData) {
 		
 		//terrainData.heightmapResolution = data.heightmapWidth + 1;
 		terrainData.size = (new Vector3(width, depth, height));
