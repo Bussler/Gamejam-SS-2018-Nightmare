@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
 
     private int state=0;
+    public Light light;
 
     // public GameObject[] animalPrefap;
     public GameObject Animal1Stage1;
@@ -22,6 +23,8 @@ public class GameController : MonoBehaviour {
     public GameObject TreeStage1;
     public GameObject TreeStage2;
     public GameObject TreeStage3;
+
+    public Material[] skybox;
 
   
     void Start () {
@@ -77,7 +80,8 @@ public class GameController : MonoBehaviour {
                     Destroy(obj);
 
                 }
- 
+                light.intensity = 0.5f;
+                RenderSettings.skybox = skybox[1];
 
                 break;
 
@@ -106,8 +110,8 @@ public class GameController : MonoBehaviour {
                     Destroy(obj);
 
                 }
-
-
+                light.intensity = 0.1f;
+                RenderSettings.skybox = skybox[2];
                 break;
 
                  case 3:

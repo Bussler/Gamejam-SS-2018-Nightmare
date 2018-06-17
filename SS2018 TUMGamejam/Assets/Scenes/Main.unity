@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0.6
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 8c3b034dacce8174c97af26a1da58aa5, type: 2}
   m_HaloStrength: 0.371
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.338
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.061148606, g: 0.07654413, b: 0.10384601, a: 0.338}
+  m_IndirectSpecularColor: {r: 0.14546672, g: 0.17178015, b: 0.17623718, a: 0.338}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -570,7 +570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfObjects: 450
   numberOfsecondObject: 450
-  secondObjectToPlace: {fileID: 1827876420994718, guid: 9c2c4bb8b2d214f4a81f6666bcb44a57,
+  secondObjectToPlace: {fileID: 1077507363793232, guid: 7c24d531d0bc8a344a3a10a9838a53b2,
     type: 2}
   objectToPlace: {fileID: 100004, guid: 2baadfadd66eb604db0a779c1f1c129c, type: 3}
 --- !u!114 &462327354
@@ -1256,6 +1256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7a7b279f42559247975058d6654b6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  light: {fileID: 170076734}
   Animal1Stage1: {fileID: 0}
   Animal1Stage2: {fileID: 0}
   Animal1Stage3: {fileID: 0}
@@ -1265,6 +1266,10 @@ MonoBehaviour:
   TreeStage1: {fileID: 1077507363793232, guid: 7c24d531d0bc8a344a3a10a9838a53b2, type: 2}
   TreeStage2: {fileID: 1078467809582188, guid: f63338cbf110fad468435230f0799ebe, type: 2}
   TreeStage3: {fileID: 1810198859112180, guid: d82dbbb6714f14545ad53c31d3b33413, type: 2}
+  skybox:
+  - {fileID: 2100000, guid: 8c3b034dacce8174c97af26a1da58aa5, type: 2}
+  - {fileID: 2100000, guid: 2431ae131174c6748ac80befa1769670, type: 2}
+  - {fileID: 2100000, guid: 0fd94ca887535884c8f25cd48600a643, type: 2}
 --- !u!4 &1936925995
 Transform:
   m_ObjectHideFlags: 0
