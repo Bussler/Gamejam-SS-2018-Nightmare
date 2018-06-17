@@ -14,7 +14,9 @@ public class TerrainTreePLacement : MonoBehaviour {
 
 
     public int numberOfObjects; // number of objects to place
+    public int numberOfsecondObject;
     private int currentObjects; // number of placed objects
+    public GameObject secondObjectToPlace;
     public GameObject objectToPlace; // GameObject to place
     private int terrainWidth; // terrain size (x)
     private int terrainLength; // terrain size (z)
@@ -44,7 +46,22 @@ public class TerrainTreePLacement : MonoBehaviour {
             // get the terrain height at the random position
             float posy = Terrain.activeTerrain.SampleHeight(new Vector3(posx, 0, posz));
             // create new gameObject on random position
-            GameObject newObject = (GameObject)Instantiate(objectToPlace, new Vector3(posx, posy, posz), Quaternion.identity);
+            GameObject newObject = (GameObject)Instantiate(objectToPlace, new Vector3(posx, posy, posz), new Quaternion(0, Random.Range(0, 360), 0, 1)) as GameObject;
+                newObject.tag = "Tree";
+            currentObjects += 1;
+
+        }
+        for(int i=0; i < numberOfsecondObject; i++)
+        {
+            // generate random x position
+            int posx = Random.Range(terrainPosX, terrainPosX + terrainWidth);
+            // generate random z position
+            int posz = Random.Range(terrainPosZ, terrainPosZ + terrainLength);
+            // get the terrain height at the random position
+            float posy = Terrain.activeTerrain.SampleHeight(new Vector3(posx, 0, posz));
+            // create new gameObject on random position
+            GameObject newObject = (GameObject)Instantiate(secondObjectToPlace, new Vector3(posx, posy, posz),new Quaternion(0,Random.Range(0,360),0,1)) as GameObject;
+            newObject.tag = "Tree";
             currentObjects += 1;
 
         }

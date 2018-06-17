@@ -12,7 +12,7 @@ public class Procedural : MonoBehaviour{
 
 	private float offsetX = 100f;
 	private float offsetY = 100f;
-    private TerrainTreePLacement placement;
+    //private TerrainTreePLacement placement;
 
     public float scale = 2f;
 	private TerrainData data;
@@ -23,8 +23,8 @@ public class Procedural : MonoBehaviour{
         offsetX = Random.Range(0f, 999f);
         offsetY = Random.Range(0f, 999f);
 
-        placement = this.GetComponent<TerrainTreePLacement>();
-        placement.Place();
+        //placement = this.GetComponent<TerrainTreePLacement>();
+       // placement.Place();
         
 
     }
@@ -40,10 +40,8 @@ public class Procedural : MonoBehaviour{
         data.size = new Vector3(width, height, depth);
         terrain.terrainData = GenerateTerrain(terrain.terrainData);
 
-        Debug.Log("Test");
-
         Blending blender = new Blending();//init blender
-        Texture2D grass = Resources.Load("greenLawn") as Texture2D;//1
+        Texture2D grass = Resources.Load("gras15") as Texture2D;//1
         Texture2D wood = Resources.Load("Holz-34") as Texture2D;//2
         Texture2D mud = Resources.Load("mud02") as Texture2D;//3
         Texture2D stone = Resources.Load("rock8") as Texture2D;//4

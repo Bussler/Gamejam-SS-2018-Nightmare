@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
+[DefaultExecutionOrder(-103)]
 public class BaseAnimal : MonoBehaviour {
 
 	public PlayerMovement player;
@@ -14,12 +16,15 @@ public class BaseAnimal : MonoBehaviour {
 	public AnimalState NEXT_STATE = AnimalState.walking;
 
 	private NavMeshAgent navAgent;
+	public Terrain terrain;
 
 	private float timer = 0.0f;
 
 	private bool rotating = false;
 	private float rotTime = 0.0f;
 	private int rotDirection = 1;
+
+	private Procedural myProcedual;
 
 
 	public enum AnimalState
@@ -33,9 +38,17 @@ public class BaseAnimal : MonoBehaviour {
 	}
 
 
+	private void Awake()
+	{
+		transform.position = new Vector3(transform.position.x, terrain.terrainData.GetHeight((int)transform.position.x, (int)transform.position.z) + 0.75f, transform.position.z);
+		//transform.Translate(new Vector3(0, terrain.terrainData.GetHeight((int) transform.position.x, (int) transform.position.z) + 1, 0));
+	}
+
+
 	// Use this for initialization
 	void Start () {
 		navAgent = GetComponent<NavMeshAgent>();
+		myProcedual = terrain.GetComponent<Procedural>();
 	}
 	
 
@@ -57,7 +70,8 @@ public class BaseAnimal : MonoBehaviour {
 			case AnimalState.walking:
 				{
 					System.Random rand = new System.Random();
-					Vector3 randDest = new Vector3(rand.Next(-25, 25), 0, rand.Next(-25, 25));
+					Vector3 randDest = new Vector3(transform.position.x + rand.Next(-50, 50), 0, transform.position.z + rand.Next(-50, 50));
+					randDest.y = terrain.terrainData.GetHeight((int) randDest.x, (int) randDest.z);
 
 					if (LAST_STATE != CURRENT_STATE)
 					{
@@ -74,7 +88,12 @@ public class BaseAnimal : MonoBehaviour {
 						}
 					}
 
-
+					timer += Time.deltaTime;
+					if (timer > 30.0f)
+					{
+						timer = 0.0f;
+						NEXT_STATE = AnimalState.rotating;
+					}
 					break;
 				}
 
@@ -144,13 +163,15 @@ public class BaseAnimal : MonoBehaviour {
 			case AnimalState.attacking:
 				{
 					Vector3 playerPos = player.transform.position;
-					playerPos.y = 0;
+					playerPos.y = terrain.terrainData.GetHeight((int)playerPos.x, (int)playerPos.z);
 
+					navAgent.speed = 15.0f;
 					navAgent.SetDestination(playerPos);
 					navAgent.isStopped = false;
 
-					if(Vector3.Distance(transform.position, player.transform.position) > 25.0f)
+					if(Vector3.Distance(transform.position, player.transform.position) > 200.0f)
 					{
+						navAgent.speed = 3.5f;
 						navAgent.isStopped = true;
 						NEXT_STATE = AnimalState.walking;
 					}
@@ -188,6 +209,15 @@ public class BaseAnimal : MonoBehaviour {
 			rotTime = 0.0f;
 			rotDirection = 1;
 			navAgent.isStopped = true;
+		}
+	}
+
+
+	public void OnTriggerEnter(Collider other)
+	{
+		if(other.gameObject.tag == "Player")
+		{
+            SceneManager.LoadScene("loosing");
 		}
 	}
 

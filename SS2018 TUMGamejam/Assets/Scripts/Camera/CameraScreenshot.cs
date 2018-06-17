@@ -10,19 +10,28 @@ public class CameraScreenshot : MonoBehaviour
 {
     private bool animalInView;
     private BoxCollider coll;
-    public Transform SpawnPoint;
+    public Camera Cam;
+    public FotoFade foto;
+    public AudioSource audio;
+    public GameController controller;
+
+   
+   // public Transform SpawnPoint;
 
     public GameObject[] fotos;
 
     public int FileCounter = 0;
 
-    public GameObject Shadow;
-    private GameObject shadowObj;
+    //public GameObject Shadow;
+  //  private GameObject shadowObj;
 
     public void Start()
     {
+       Cam = this.GetComponent<Camera>();
         coll = this.GetComponent<BoxCollider>();
         coll.enabled = false;
+        audio = this.GetComponent<AudioSource>();
+    
     }
 
     private void Update()
@@ -37,7 +46,7 @@ public class CameraScreenshot : MonoBehaviour
         }
         */
         coll.enabled = false;
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             coll.enabled = true;
            
@@ -47,42 +56,43 @@ public class CameraScreenshot : MonoBehaviour
     void CamCapture()
     {
 
-        ChangeEnviorment();
-
-      
+       // ChangeEnviorment();
+       foto.SetBlack();
+        audio.Play();
             Debug.Log("capture");
-            Camera Cam = GetComponent<Camera>();
 
+      //  controller.ChangeState(1);
             RenderTexture currentRT = RenderTexture.active;
             RenderTexture.active = Cam.targetTexture;
 
             Cam.Render();
 
-            Texture2D Image = new Texture2D(Cam.targetTexture.width, Cam.targetTexture.height);
-            Image.ReadPixels(new Rect(0, 0, Cam.targetTexture.width, Cam.targetTexture.height), 0, 0);
-            Image.Apply();
+            Texture2D image = new Texture2D(Cam.targetTexture.width, Cam.targetTexture.height);
+            image.ReadPixels(new Rect(0, 0, Cam.targetTexture.width, Cam.targetTexture.height), 0, 0);
+            image.Apply();
             RenderTexture.active = currentRT;
 
-            var Bytes = Image.EncodeToPNG();
+            var Bytes = image.EncodeToPNG();
            // Destroy(Image);
-        fotos[FileCounter].GetComponent<MeshRenderer>().sharedMaterial.mainTexture = Image;
+        fotos[FileCounter].GetComponent<MeshRenderer>().sharedMaterial.mainTexture = image;
 
 
        // File.WriteAllBytes(Application.dataPath + "/Resources/" + FileCounter + ".png", Bytes);
         
           //  fotos[FileCounter].GetComponent<MeshRenderer>().sharedMaterial.mainTexture = Resources.Load("" + 0) as Texture;
 
-            FileCounter++;
+            //FileCounter++;
             coll.enabled = false;
         animalInView = false;
-
-
-        Destroy(shadowObj);
+        foto.fading = true;
+        foto.GetComponent<Animator>().SetTrigger("shoot");
+       // controller.ChangeState(-1);
+        // Destroy(shadowObj);
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Animal")
+        if  (other.tag == "Animal1"||other.tag == "Animal2"||other.tag == "Animal3")
         {
             animalInView = true;
 
@@ -92,7 +102,7 @@ public class CameraScreenshot : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Animal")
+        if (other.tag == "Animal1"||other.tag == "Animal2"||other.tag == "Animal3")
         {
 
             Debug.Log("Stay");
@@ -102,7 +112,7 @@ public class CameraScreenshot : MonoBehaviour
 
     private void ChangeEnviorment()
     {
-      shadowObj=  Instantiate(Shadow, SpawnPoint.position, Quaternion.identity) as GameObject;
+     // shadowObj=  Instantiate(Shadow, SpawnPoint.position, Quaternion.identity) as GameObject;
 
     }
 

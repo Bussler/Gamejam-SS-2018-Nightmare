@@ -114,7 +114,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -200,6 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fading: 0
   fadeSpeed: 0.3
+  controller: {fileID: 0}
 --- !u!212 &212220326479744316
 SpriteRenderer:
   m_ObjectHideFlags: 1

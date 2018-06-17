@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Sensor
   - Animal
+  - Animal1
+  - Animal2
+  - Animal3
+  - Tree
   layers:
   - Default
   - TransparentFX

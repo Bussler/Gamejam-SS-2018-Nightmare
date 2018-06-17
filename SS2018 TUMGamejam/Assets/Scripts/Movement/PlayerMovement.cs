@@ -8,17 +8,18 @@ public class PlayerMovement : MonoBehaviour { //This script experiments with mov
     CharacterController controller; //character controller
     public float rotateSpeed=60;
     public float moveSpeed=10;
-    public float inAirSpeed = 3;
-    public float jumpSpeed=12;
+    public float inAirSpeed = 10;
+    public float jumpSpeed=0;
     public float gravity = 20;
 
     private float lastYSpeed = 0;//need this for in air movement
     private float storedYValue=0;
 
     private float cooldown = 0;
-    private bool wasjumping;
+    private bool waswalking;
     private float originalMoveSpeed;
     private float helperSpeed;
+    private AudioSource audio;
     
 
     Vector3 moveValues = Vector3.zero;
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour { //This script experiments with mov
         controller = GetComponent<CharacterController>();
         originalMoveSpeed = moveSpeed;
         helperSpeed = moveSpeed / 2;
+        audio = this.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -53,29 +55,46 @@ public class PlayerMovement : MonoBehaviour { //This script experiments with mov
     {
         storedYValue = transform.position.y;//zu beginn wird immer die momentane position gespeichert. Diese wird zur Berechnung der Gravity wichtig, da schneller gefallen werden soll
 
+        if ((Input.GetAxis("Horizontal")!=0|| Input.GetAxis("Vertical")!=0)&&cooldown<=0)
+        {
+            audio.Play();
+            waswalking = true;
+            cooldown = 0.8f;
+        }
+        if (waswalking==true)
+        {
+            cooldown -= Time.deltaTime;
+            if (cooldown<=0)
+            {
+                waswalking = false;
+                cooldown = 0;
+            }
+        }
+
         if (controller.isGrounded)
         {
-            if (wasjumping==true)
-            {
-                cooldown = cooldown-Time.deltaTime;//runterzaehlen
-                moveSpeed = helperSpeed+(Time.deltaTime*10);//movespeed anpassen nach der landung
-                if (cooldown<=0)
-                {
-                    cooldown = 0;
-                    wasjumping = false;
-                    moveSpeed = originalMoveSpeed;
-                    helperSpeed = moveSpeed / 2;
-                }
-            }
+            /* if (wasjumping==true)
+             {
+                 cooldown = cooldown-Time.deltaTime;//runterzaehlen
+                 moveSpeed = helperSpeed+(Time.deltaTime*10);//movespeed anpassen nach der landung
+                 if (cooldown<=0)
+                 {
+                     cooldown = 0;
+                     wasjumping = false;
+                     moveSpeed = originalMoveSpeed;
+                     helperSpeed = moveSpeed / 2;
+                 }
+             }*/
+
 
             moveValues = new Vector3(Input.GetAxis("Horizontal")*moveSpeed, 0.0f, Input.GetAxis("Vertical")*moveSpeed);
             moveValues = transform.TransformDirection(moveValues); //transforms vector from world into local space, therefore making the Rotatation of the player count
-
+           // audio.Play();
             if (Input.GetButton("Jump")&&cooldown<=0)
             {
-                moveValues.y = jumpSpeed;//making the player jump
+               /* moveValues.y = jumpSpeed;//making the player jump
                 wasjumping = true;
-                cooldown = 1;
+                cooldown = 1;*/
             }
         }
         else

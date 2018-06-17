@@ -48,9 +48,9 @@ public class Blending {
     private void calculateAlphas(float height, float slope)
     {
         //Debug.Log("Height: " + height + " slope: " + slope);
-        al4 = height * slope;
-        al3 = height;
-        al2 = (height * slope)/2.0f;
+        al4 = height * slope*0.8f;
+        al3 = height/2.0f;
+        al2 = (height * slope)*1.2f;
     }
 
     private Vector3[,] generateNomals(float[,] heights, int width, int height)
