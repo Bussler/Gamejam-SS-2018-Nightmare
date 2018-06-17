@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -90,23 +91,8 @@ public class GameController : MonoBehaviour {
                 break;
 
                  case 3:
-                Debug.Log("Switchstate");
-                foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Animal1"))
-                {
-                    obj.GetComponent<MeshFilter>().mesh = Animal1Stage3;
-
-                }
-                foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Animal2"))
-                {
-                    obj.GetComponent<MeshFilter>().mesh = Animal2Stage3;
-
-                }
-                foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Animal3"))
-                {
-                    obj.GetComponent<MeshFilter>().mesh = Animal3Stage3;
-
-                }
-
+               
+                //win Game
              
                 break;
 
