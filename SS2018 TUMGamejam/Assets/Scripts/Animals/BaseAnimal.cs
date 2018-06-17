@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[DefaultExecutionOrder(-103)]
 public class BaseAnimal : MonoBehaviour {
 
 	public PlayerMovement player;
@@ -33,6 +34,13 @@ public class BaseAnimal : MonoBehaviour {
 		rotating,
 		stare,
 		attacking,
+	}
+
+
+	private void Awake()
+	{
+		transform.position = new Vector3(transform.position.x, terrain.terrainData.GetHeight((int)transform.position.x, (int)transform.position.z) + 0.75f, transform.position.z);
+		//transform.Translate(new Vector3(0, terrain.terrainData.GetHeight((int) transform.position.x, (int) transform.position.z) + 1, 0));
 	}
 
 
