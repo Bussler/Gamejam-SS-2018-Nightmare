@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.68378425, g: 0.69040185, b: 0.735849, a: 1}
   m_FogMode: 2
   m_FogDensity: 0.1
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.338
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.061148606, g: 0.07654413, b: 0.10384601, a: 0.338}
+  m_IndirectSpecularColor: {r: 0.061148696, g: 0.07654425, b: 0.1038462, a: 0.338}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -514,8 +514,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a15c260ad2af1fd4fbbeb78589e6a540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfObjects: 100
-  objectToPlace: {fileID: 1501793674435042, guid: 960c940bd693a2d4d8f5473077d97b64,
+  numberOfObjects: 450
+  numberOfsecondObject: 450
+  secondObjectToPlace: {fileID: 1827876420994718, guid: 9c2c4bb8b2d214f4a81f6666bcb44a57,
+    type: 2}
+  objectToPlace: {fileID: 1077507363793232, guid: f03249087925e7042ac030db7694a072,
     type: 2}
 --- !u!114 &462327354
 MonoBehaviour:
@@ -759,6 +762,7 @@ MonoBehaviour:
   radius: 250
   myTerrain: {fileID: 462327350}
   hasNebel: 1
+  mistImage: {fileID: 0}
 --- !u!4 &1525847681
 Transform:
   m_ObjectHideFlags: 0

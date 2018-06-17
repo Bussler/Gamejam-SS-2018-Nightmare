@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour { //This script experiments with mov
 
         if (controller.isGrounded)
         {
-            if (wasjumping==true)
+           /* if (wasjumping==true)
             {
                 cooldown = cooldown-Time.deltaTime;//runterzaehlen
                 moveSpeed = helperSpeed+(Time.deltaTime*10);//movespeed anpassen nach der landung
@@ -68,16 +68,16 @@ public class PlayerMovement : MonoBehaviour { //This script experiments with mov
                     moveSpeed = originalMoveSpeed;
                     helperSpeed = moveSpeed / 2;
                 }
-            }
+            }*/
 
             moveValues = new Vector3(Input.GetAxis("Horizontal")*moveSpeed, 0.0f, Input.GetAxis("Vertical")*moveSpeed);
             moveValues = transform.TransformDirection(moveValues); //transforms vector from world into local space, therefore making the Rotatation of the player count
             audio.Play();
             if (Input.GetButton("Jump")&&cooldown<=0)
             {
-                moveValues.y = jumpSpeed;//making the player jump
+               /* moveValues.y = jumpSpeed;//making the player jump
                 wasjumping = true;
-                cooldown = 1;
+                cooldown = 1;*/
             }
         }
         else
