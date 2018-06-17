@@ -585,6 +585,10 @@ Prefab:
       propertyPath: jumpSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1596837639437810, guid: 27a3fe092b9476548bf0f456bc6dd393, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 27a3fe092b9476548bf0f456bc6dd393, type: 2}
   m_IsPrefabParent: 0
@@ -788,6 +792,11 @@ Prefab:
     - target: {fileID: 1156274526498866, guid: 70b30a98d1741814399fead18436b27a, type: 2}
       propertyPath: m_Name
       value: BaseAnimal2
+      objectReference: {fileID: 0}
+    - target: {fileID: 65089554858289464, guid: 70b30a98d1741814399fead18436b27a,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70b30a98d1741814399fead18436b27a, type: 2}

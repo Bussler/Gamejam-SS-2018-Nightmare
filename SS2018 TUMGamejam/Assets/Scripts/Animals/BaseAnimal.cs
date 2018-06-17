@@ -162,13 +162,15 @@ public class BaseAnimal : MonoBehaviour {
 			case AnimalState.attacking:
 				{
 					Vector3 playerPos = player.transform.position;
-					playerPos.y = 0;
+					playerPos.y = terrain.terrainData.GetHeight((int)playerPos.x, (int)playerPos.z);
 
+					navAgent.speed = 15.0f;
 					navAgent.SetDestination(playerPos);
 					navAgent.isStopped = false;
 
-					if(Vector3.Distance(transform.position, player.transform.position) > 25.0f)
+					if(Vector3.Distance(transform.position, player.transform.position) > 200.0f)
 					{
+						navAgent.speed = 3.5f;
 						navAgent.isStopped = true;
 						NEXT_STATE = AnimalState.walking;
 					}
@@ -206,6 +208,15 @@ public class BaseAnimal : MonoBehaviour {
 			rotTime = 0.0f;
 			rotDirection = 1;
 			navAgent.isStopped = true;
+		}
+	}
+
+
+	public void OnTriggerEnter(Collider other)
+	{
+		if(other.gameObject.tag == "Player")
+		{
+			Debug.Log("Player died!");
 		}
 	}
 
