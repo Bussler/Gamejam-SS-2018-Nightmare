@@ -1,15 +1,39 @@
 fileFormatVersion: 2
-guid: aafc86acced6d734aaeae310f47444ff
+guid: a9113705f153ba5449452eeab292b788
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Floor
+    100004: Light
+    100006: Polygon
+    100008: Polygon_2
+    100010: Polygon_3
+    100012: Skin
+    100014: Subdivision_Surface
+    100016: Symmetry
     400000: //RootNode
-    2100000: Dog Base LEvel 2
-    2100002: Material.001
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Polygon
+    400002: Floor
+    400004: Light
+    400006: Polygon
+    400008: Polygon_2
+    400010: Polygon_3
+    400012: Skin
+    400014: Subdivision_Surface
+    400016: Symmetry
+    2100000: Material.001
+    2100002: Material.005
+    2100004: Material.004
+    2100006: Material.003
+    2100008: Material.002
+    2100010: No Name
+    2300000: Polygon
+    2300002: Polygon_3
+    3300000: Polygon
+    3300002: Polygon_3
+    4300000: Polygon_3
+    4300002: Polygon
+    10800000: Light
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -41,7 +65,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 6
+    globalScale: 0.06
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
