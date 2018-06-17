@@ -217,7 +217,7 @@ public class BaseAnimal : MonoBehaviour {
 	{
 		if(other.gameObject.tag == "Player")
 		{
-            SceneManager.LoadScene("loosing");
+            SceneManager.LoadScene("losing");
 		}
 	}
 
