@@ -87,7 +87,7 @@ public class CameraScreenshot : MonoBehaviour
         foto.fading = true;
         foto.GetComponent<Animator>().SetTrigger("shoot");
        // controller.ChangeState(-1);
-        // Destroy(shadowObj);
+        // Destroy(obj);
     }
 
     public void OnTriggerEnter(Collider other)
@@ -95,7 +95,7 @@ public class CameraScreenshot : MonoBehaviour
         if  (other.tag == "Animal1"||other.tag == "Animal2"||other.tag == "Animal3")
         {
             animalInView = true;
-
+            
             CamCapture();
         }
     }

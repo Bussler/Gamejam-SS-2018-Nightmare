@@ -22,7 +22,7 @@ public class Nebel : MonoBehaviour {
         //  Debug.Log(RenderSettings.fogDensity);
         if (hasNebel)
         {
-            if ((player.transform.position - this.transform.position).magnitude > radius-20)
+            if ((player.transform.position - this.transform.position).magnitude > radius-40)
             {
                 // RenderSettings.fogDensity += 0.005f;
                var tempColor = mistImage.color;

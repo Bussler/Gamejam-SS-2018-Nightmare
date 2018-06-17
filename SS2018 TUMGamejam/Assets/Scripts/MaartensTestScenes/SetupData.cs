@@ -28,6 +28,7 @@ public class SetupData : MonoBehaviour {
         placement.Place();
 
         //setup animals
+       
 
     }
 

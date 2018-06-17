@@ -59,15 +59,22 @@ public class GameController : MonoBehaviour {
                      Debug.Log("Switchstate");                 
                      foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Animal1"))
                      {
-                   // Instantiate(Animal1Stage1, obj.transform.position, obj.transform.rotation);
-                   // Destroy(obj);
-
-                     }
+                    GameObject temp = Instantiate(Animal1Stage1, obj.transform.position, obj.transform.rotation);
+                    Destroy(obj);
+                    temp.GetComponent<BaseAnimal>().player = GameObject.Find("Player").GetComponent<PlayerMovement>();
+                    Terrain t = GameObject.Find("Terrain").GetComponent<Terrain>();
+                    temp.GetComponent<BaseAnimal>().terrain = t;
+                    temp.GetComponent<BaseAnimal>().enabled = true;
+                }
                 foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Animal2"))
                 {
-                  //  Instantiate(Animal2Stage1, obj.transform.position, obj.transform.rotation);
-                   // Destroy(obj);
-
+                    
+                   GameObject temp = Instantiate(Animal2Stage1, obj.transform.position, obj.transform.rotation);
+                    temp.GetComponent<BaseAnimal>().player=GameObject.Find("Player").GetComponent<PlayerMovement>();
+                    Terrain t = GameObject.Find("Terrain").GetComponent<Terrain>();
+                    temp.GetComponent<BaseAnimal>().terrain = t;
+                    Destroy(obj);
+                    temp.GetComponent<BaseAnimal>().enabled = true;
                 }
               
 
@@ -89,14 +96,21 @@ public class GameController : MonoBehaviour {
                 Debug.Log("Switchstate");
                 foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Animal1"))
                 {
-                  //  Instantiate(Animal1Stage2, obj.transform.position, obj.transform.rotation);
-                  //  Destroy(obj);
-
+                    GameObject temp = Instantiate(Animal1Stage2, obj.transform.position, obj.transform.rotation);
+                    Destroy(obj);
+                    temp.GetComponent<BaseAnimal>().player = GameObject.Find("Player").GetComponent<PlayerMovement>();
+                    Terrain t = GameObject.Find("Terrain").GetComponent<Terrain>();
+                    temp.GetComponent<BaseAnimal>().terrain = t;
+                    temp.GetComponent<BaseAnimal>().enabled = true;
                 }
                 foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Animal2"))
                 {
-                 //   Instantiate(Animal2Stage2, obj.transform.position, obj.transform.rotation);
-                  //  Destroy(obj);
+                  GameObject temp =  Instantiate(Animal2Stage2, obj.transform.position, obj.transform.rotation);
+                    Destroy(obj);
+                    temp.GetComponent<BaseAnimal>().player = GameObject.Find("Player").GetComponent<PlayerMovement>();
+                    Terrain t = GameObject.Find("Terrain").GetComponent<Terrain>();
+                    temp.GetComponent<BaseAnimal>().terrain = t;
+                    temp.GetComponent<BaseAnimal>().enabled = true;
 
                 }
 
