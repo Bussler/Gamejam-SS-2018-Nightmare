@@ -24,9 +24,9 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 0.6
-  m_AmbientMode: 3
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 8ba452c2b2902044698d81610528b577, type: 2}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.371
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.338
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-<<<<<<< HEAD
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0.338}
-=======
-  m_IndirectSpecularColor: {r: 0.061148696, g: 0.07654425, b: 0.1038462, a: 0.338}
->>>>>>> 694c8598a7b40b0904889b4dfb366a88405e79af
+  m_IndirectSpecularColor: {r: 0.061148606, g: 0.07654413, b: 0.10384601, a: 0.338}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -290,7 +286,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 0.9811321, g: 0.97492385, b: 0.9579922, a: 1}
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -576,8 +572,7 @@ MonoBehaviour:
   numberOfsecondObject: 450
   secondObjectToPlace: {fileID: 1827876420994718, guid: 9c2c4bb8b2d214f4a81f6666bcb44a57,
     type: 2}
-  objectToPlace: {fileID: 1077507363793232, guid: 7c24d531d0bc8a344a3a10a9838a53b2,
-    type: 2}
+  objectToPlace: {fileID: 100004, guid: 2baadfadd66eb604db0a779c1f1c129c, type: 3}
 --- !u!114 &462327354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1261,7 +1256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7a7b279f42559247975058d6654b6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  light: {fileID: 170076734}
   Animal1Stage1: {fileID: 0}
   Animal1Stage2: {fileID: 0}
   Animal1Stage3: {fileID: 0}
@@ -1271,10 +1265,6 @@ MonoBehaviour:
   TreeStage1: {fileID: 1077507363793232, guid: 7c24d531d0bc8a344a3a10a9838a53b2, type: 2}
   TreeStage2: {fileID: 1078467809582188, guid: f63338cbf110fad468435230f0799ebe, type: 2}
   TreeStage3: {fileID: 1810198859112180, guid: d82dbbb6714f14545ad53c31d3b33413, type: 2}
-  skybox:
-  - {fileID: 2100000, guid: 8ba452c2b2902044698d81610528b577, type: 2}
-  - {fileID: 2100000, guid: 112cfaba18879f943bfb5e1ecb5b4853, type: 2}
-  - {fileID: 2100000, guid: e4bed01ebc8178b4e938989a0f595fcd, type: 2}
 --- !u!4 &1936925995
 Transform:
   m_ObjectHideFlags: 0
