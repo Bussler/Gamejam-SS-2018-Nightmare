@@ -197,7 +197,6 @@
             <e p="NavMeshSourceTag.cs" t="Include" />
           </e>
           <e p="Nebel.cs" t="Include" />
-          <e p="Player.cs" t="Include" />
           <e p="StartMenu" t="Include">
             <e p="MainMenuFotos.cs" t="Include" />
             <e p="MenuFotoSpawner.cs" t="Include" />

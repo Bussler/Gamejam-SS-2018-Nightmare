@@ -46,7 +46,7 @@ public class TerrainTreePLacement : MonoBehaviour {
             // get the terrain height at the random position
             float posy = Terrain.activeTerrain.SampleHeight(new Vector3(posx, 0, posz));
             // create new gameObject on random position
-            GameObject newObject = (GameObject)Instantiate(objectToPlace, new Vector3(posx, posy, posz), Quaternion.Euler(0,Random.Range(0,360),0)) as GameObject;
+            GameObject newObject = (GameObject)Instantiate(objectToPlace, new Vector3(posx, posy, posz), new Quaternion(0, Random.Range(0, 360), 0, 1)) as GameObject;
                 newObject.tag = "Tree";
             currentObjects += 1;
 
@@ -60,8 +60,7 @@ public class TerrainTreePLacement : MonoBehaviour {
             // get the terrain height at the random position
             float posy = Terrain.activeTerrain.SampleHeight(new Vector3(posx, 0, posz));
             // create new gameObject on random position
-            Quaternion c = Quaternion.EulerAngles(4, 5, 6);
-            GameObject newObject = (GameObject)Instantiate(secondObjectToPlace, new Vector3(posx, posy, posz),Quaternion.Euler(0,Random.Range(0,360),0)) as GameObject;
+            GameObject newObject = (GameObject)Instantiate(secondObjectToPlace, new Vector3(posx, posy, posz),new Quaternion(0,Random.Range(0,360),0,1)) as GameObject;
             newObject.tag = "Tree";
             currentObjects += 1;
 
