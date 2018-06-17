@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -176,7 +176,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &686070530
 GameObject:
@@ -218,7 +218,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &956948000
 GameObject:
@@ -268,7 +268,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1517785737
 GameObject:
@@ -356,7 +356,7 @@ Transform:
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1517785742
 MonoBehaviour:
@@ -369,6 +369,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894bd4ad7ac6f1c4bbe223651136417b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1530331128
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4147348582939402, guid: 70b30a98d1741814399fead18436b27a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 11.396903
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147348582939402, guid: 70b30a98d1741814399fead18436b27a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.3535058e-17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147348582939402, guid: 70b30a98d1741814399fead18436b27a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -19.606447
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147348582939402, guid: 70b30a98d1741814399fead18436b27a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147348582939402, guid: 70b30a98d1741814399fead18436b27a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147348582939402, guid: 70b30a98d1741814399fead18436b27a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147348582939402, guid: 70b30a98d1741814399fead18436b27a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147348582939402, guid: 70b30a98d1741814399fead18436b27a, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 70b30a98d1741814399fead18436b27a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1620856076
 Prefab:
   m_ObjectHideFlags: 0
@@ -406,7 +448,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4774931150475400, guid: 2d8ea2743f68f4246afad32a794362c3, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114287497919898428, guid: 2d8ea2743f68f4246afad32a794362c3,
         type: 2}
@@ -508,7 +550,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4147348582939402, guid: 70b30a98d1741814399fead18436b27a, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114426703635274172, guid: 70b30a98d1741814399fead18436b27a,
         type: 2}

@@ -36,6 +36,13 @@ public class BaseAnimal : MonoBehaviour {
 	}
 
 
+	/*private void Awake()
+	{
+		transform.position = new Vector3(transform.position.x, terrain.terrainData.GetHeight((int)transform.position.x, (int)transform.position.z) + 0.75f, transform.position.z);
+		//transform.Translate(new Vector3(0, terrain.terrainData.GetHeight((int) transform.position.x, (int) transform.position.z) + 1, 0));
+	}*/
+
+
 	// Use this for initialization
 	void Start () {
 		navAgent = GetComponent<NavMeshAgent>();
