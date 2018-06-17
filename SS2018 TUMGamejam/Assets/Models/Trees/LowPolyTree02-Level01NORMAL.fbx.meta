@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 57dddf1766c607b4e88023abccecc42c
+guid: dbf2eeb873a41cb47b3585ef48b07358
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -80,8 +80,8 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
