@@ -38,11 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.338
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0.338}
-=======
-  m_IndirectSpecularColor: {r: 0.061148696, g: 0.07654425, b: 0.1038462, a: 0.338}
->>>>>>> 694c8598a7b40b0904889b4dfb366a88405e79af
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -576,8 +572,7 @@ MonoBehaviour:
   numberOfsecondObject: 450
   secondObjectToPlace: {fileID: 1827876420994718, guid: 9c2c4bb8b2d214f4a81f6666bcb44a57,
     type: 2}
-  objectToPlace: {fileID: 1077507363793232, guid: 7c24d531d0bc8a344a3a10a9838a53b2,
-    type: 2}
+  objectToPlace: {fileID: 100004, guid: 2baadfadd66eb604db0a779c1f1c129c, type: 3}
 --- !u!114 &462327354
 MonoBehaviour:
   m_ObjectHideFlags: 0
