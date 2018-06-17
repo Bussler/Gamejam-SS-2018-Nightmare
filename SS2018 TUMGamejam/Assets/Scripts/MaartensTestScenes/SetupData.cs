@@ -17,7 +17,7 @@ public class SetupData : MonoBehaviour {
         GameObject nebelObj = GameObject.Find("Nebel");
         nebelObj.transform.position = new Vector3(TWidth/2, 0, TWidth/2);
         Nebel mynebel = nebelObj.GetComponent<Nebel>();
-        mynebel.radius = (TWidth / 2) - 8;
+        mynebel.radius = (TWidth / 2);
 
         //setup player
         GameObject playerObj = GameObject.Find("Player");
